@@ -1,5 +1,7 @@
+import SearchBar from '../../components/SearchBar'
+
 function Home() {
-  return <div>Home works!</div>
+  return <SearchBar />
 }
 
 export default Home

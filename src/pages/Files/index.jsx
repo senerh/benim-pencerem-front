@@ -1,10 +1,18 @@
 import { useSearchParams } from 'react-router-dom'
+import SearchBar from '../../components/SearchBar'
 
 function Files() {
   const [searchParams] = useSearchParams()
-  const q = searchParams.get('q')
+  const query = searchParams.get('query')
 
-  return <div>Research files with q = {q}</div>
+  return (
+    <div>
+      <SearchBar defaultValue={query} />
+      {query
+        ? `Research files with query = ${query}`
+        : 'Research the last files'}
+    </div>
+  )
 }
 
 export default Files
