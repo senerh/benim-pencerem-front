@@ -7,13 +7,11 @@ import Home from './pages/Home'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="files" element={<Files />} />
-        <Route path="files/:id" element={<File />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="files" element={<Files />} />
+      <Route path="files/:id" element={<File />} />
+    </Routes>
+  </BrowserRouter>
 )
