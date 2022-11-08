@@ -1,0 +1,10 @@
+.home {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.home .logo {
+    width: 350px;
+    height: auto;
+    margin-bottom: 10px;
+}

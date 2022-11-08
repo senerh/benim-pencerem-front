@@ -9,10 +9,12 @@ import { useCallback } from 'react'
 function Files() {
   const [files, setFiles] = useState([])
   const [nextPageToken, setNextPageToken] = useState(null)
+  const [hasNoResult, setHasNoResult] = useState(false)
   const [searchParams] = useSearchParams()
   const query = searchParams.get('query')
 
   useEffect(() => {
+    setHasNoResult(false)
     let url = 'http://localhost:8080/files'
     if (query) {
       url += '?q=' + encodeURIComponent(query)
@@ -23,6 +25,7 @@ function Files() {
         (result) => {
           setFiles(result.files)
           setNextPageToken(result.nextPageToken)
+          setHasNoResult(!result.files.length)
         },
         (error) => {
           console.log('Error while fetching api', error)
@@ -62,6 +65,8 @@ function Files() {
 
   const loader = <div key={0}>Loading...</div>
 
+  const noResult = <div>No result for '{query}'</div>
+
   return (
     <div>
       <SearchBar defaultValue={query} />
@@ -75,6 +80,7 @@ function Files() {
           ))}
         </ul>
       </InfiniteScroll>
+      {hasNoResult && noResult}
     </div>
   )
 }

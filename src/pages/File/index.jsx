@@ -23,15 +23,23 @@ function File() {
   return (
     file && (
       <div>
-        <div>{file.id}</div>
-        <div>{file.name}</div>
-        <div>{file.mimeType}</div>
-        <div>{file.description}</div>
-        <div>{file.tags.map((tag) => tag + ' ')}</div>
-        <div>{file.thumbnailLink}</div>
-        <div>{file.downloadLink}</div>
-        <div>{file.previewLink}</div>
+        <h2>{file.name}</h2>
         <div>{file.creationDate}</div>
+        <div>{file.tags.map((tag) => '#' + tag + ' ')}</div>
+        <p style={{ whiteSpace: 'pre-line' }}>{file.description}</p>
+        <img
+          src={file.thumbnailLink}
+          alt={file.name}
+          referrerPolicy="no-referrer"
+        />
+        <div>
+          <a href={file.downloadLink}>Download</a>
+        </div>
+        <div>
+          <a href={file.previewLink} target="_blank" rel="noreferrer">
+            Preview
+          </a>
+        </div>
       </div>
     )
   )
